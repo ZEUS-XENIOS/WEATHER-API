@@ -140,13 +140,25 @@ if data and "main" in data:
     }
     pd.DataFrame([new_entry]).to_csv(file_name, mode="a", header=False, index=False)
 else:
-    st.error("⚠️ City not found or API issue. Please check the spelling.")
+    # If API key is missing or city is wrong
+    if API_KEY == "PASTE_YOUR_KEY_HERE":
+        st.warning("🔑 **Action Required:** Please add your OpenWeather API Key to the Streamlit Secrets settings.")
+    else:
+        st.error("⚠️ City not found or API issue. Please check the spelling.")
     temp, humidity, condition = 0, 0, "N/A"
 
 # 6. Load & Analyze History
-df = pd.read_csv(file_name)
-df["timestamp"] = pd.to_datetime(df["timestamp"])
-city_df = df[df["city"].str.lower() == city.lower()].sort_values("timestamp")
+try:
+    df = pd.read_csv(file_name)
+    if not df.empty and "timestamp" in df.columns:
+        df["timestamp"] = pd.to_datetime(df["timestamp"], errors='coerce')
+        df = df.dropna(subset=["timestamp"]) # Remove any rows with bad dates
+    else:
+        df = pd.DataFrame(columns=["timestamp", "city", "temp", "humidity", "condition"])
+except Exception:
+    df = pd.DataFrame(columns=["timestamp", "city", "temp", "humidity", "condition"])
+
+city_df = df[df["city"].str.lower() == city.lower()].sort_values("timestamp") if not df.empty else df
 
 # 7. AI ML Prediction
 prediction = 0

@@ -1,0 +1,12 @@
+timestamp,city,temp,humidity,condition
+2026-03-15 09:00:00,Bangalore,27,65,Cloudy
+2026-03-15 10:00:00,Bangalore,29,60,Sunny
+2026-03-15 11:00:00,Bangalore,31,55,Sunny
+2026-03-15 12:00:00,Bangalore,32,50,Sunny
+2026-04-12 11:34:36.445209,Bangalore,31.87,44,Clear
+2026-04-12 11:35:36.347384,Bangalore,31.87,44,Clear
+2026-04-12 11:35:42.616891,Bangalore,31.87,44,Clear
+2026-04-12 11:35:46.811184,Bangalore,31.87,44,Clear
+2026-04-12 11:35:50.257006,Bangalore,31.87,44,Clear
+2026-04-12 11:41:39.450953,Bangalore,32.03,44,Clear
+2026-04-12 11:44:24.329497,Bangalore,32.03,44,Clear

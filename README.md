@@ -43,4 +43,4 @@ API_KEY = "your_api_key_here"
 CITY = "Bangalore"  # or your preferred city
  5. Launch the Dashboard
 streamlit run weather_dashboard.py
-Open your browser at http://localhost:8501 and you're good to go!
+Open your browser at https://myweatherpredictor.streamlit.app/ and you're good to go!
